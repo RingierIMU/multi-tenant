@@ -2,7 +2,10 @@
 
 namespace Ringierimu\MultiTenancy;
 
+use Illuminate\Support\Facades\File;
 use Ringierimu\MultiTenancy\Models\Tenant;
+use SplFileInfo;
+use Symfony\Component\Finder\Finder;
 
 /**
  * Class TenantManager
@@ -46,7 +49,30 @@ class TenantManager
         }
 
         $this->setTenant($tenant);
+        $this->loadTenantConfig($tenant);
 
         return true;
+    }
+
+    /**
+     * @param \Ringierimu\MultiTenancy\Models\Tenant $tenant
+     */
+    private function loadTenantConfig(Tenant $tenant)
+    {
+        $envConfigPath = config_path() . "/tenants/{$tenant->aliases}";
+        $config = app('config');
+
+        if (!File::exists($envConfigPath)) {
+            return;
+        }
+
+        /** @var SplFileInfo $file */
+        foreach (Finder::create()->files()->name('*.php')->in($envConfigPath) as $file) {
+            $key_name = basename($file->getRealPath(), '.php');
+            $old_values = $config->get($key_name) ?: [];
+            $new_values = require $file->getRealPath();
+
+            $config->set($key_name, array_replace_recursive($old_values, $new_values));
+        }
     }
 }
