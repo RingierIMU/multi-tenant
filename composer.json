@@ -20,6 +20,11 @@
             "Ringierimu\\MultiTenancy\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Ringierimu\\MultiTenancy\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -28,7 +33,8 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.0 || ^7.0"
+        "phpunit/phpunit": "^6.0 || ^7.0",
+        "orchestra/testbench": "^3.5"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
