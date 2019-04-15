@@ -1,6 +1,6 @@
 # Laravel Multi Tenancy
 
-The term "multi-tenancy" refers to a software architecture in which a single instance of software runs on a server and 
+The term **multi-tenancy** refers to a software architecture in which a single instance of software runs on a server and 
 serves multiple tenants. A tenant is a group of users who share a common access with specific privileges to the software instance.
 With a multi-tenant architecture, a software application is designed to provide every tenant a dedicated share of 
 the instance - including its data, configuration, user management, tenant individual functionality and non-functional properties.
@@ -59,14 +59,14 @@ and run your seeder.
 ```php
 <?php
 
-$tenantManager = app(\Ringierimu\MultiTenancy\TenantManager::class);
+$tenantManager = app(Ringierimu\MultiTenancy\TenantManager::class);
 echo $tenantManager->getTenant();
 ``` 
 
 ```php
 <?php
 
-use \Ringierimu\MultiTenancy\TenantManager;
+use Ringierimu\MultiTenancy\TenantManager;
 
 public function login(TenantManager $tenantManager)
 {
@@ -74,9 +74,9 @@ public function login(TenantManager $tenantManager)
 }
 
 ```
-#### Tenants App Config
-- To add a custom configuration per per Tenants, add directory `tenants` inside the laravel default config directory with the tenant `aliases` key as a subdirectory.
-eg. `config/tenants/hz/app.php`.
-NB. `aliases` key must be the same as the Tenant aliases key set on table `tenants`
+### Tenants App Config
+- To add a custom configuration per per Tenants, add directory **`tenants`** inside the laravel default config directory with the tenant **`aliases`** key as a subdirectory.
+eg. `config/tenants/hz/app.php`.<br>
+**NB.`aliases` key must be the same as the Tenant aliases key set on `tenants` table.**
 - Any config keys found inside tenants directory will override any existing key of laravel default config.
 
