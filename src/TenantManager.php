@@ -61,13 +61,20 @@ class TenantManager
     {
         $envConfigPath = config_path() . "/tenants/{$tenant->aliases}";
         $config = app('config');
+        $excludedDirectories = [];
+        $environment = app()->environment();
 
         if (!File::exists($envConfigPath)) {
             return;
         }
 
+        /** @var SplFileInfo $directories */
+        foreach (Finder::create()->directories()->in($envConfigPath)->exclude($environment) as $directories) {
+            $excludedDirectories[] = basename($directories->getRealPath());
+        }
+
         /** @var SplFileInfo $file */
-        foreach (Finder::create()->files()->name('*.php')->in($envConfigPath) as $file) {
+        foreach (Finder::create()->files()->name('*.php')->in($envConfigPath)->exclude($excludedDirectories) as $file) {
             $key_name = basename($file->getRealPath(), '.php');
             $old_values = $config->get($key_name) ?: [];
             $new_values = require $file->getRealPath();
