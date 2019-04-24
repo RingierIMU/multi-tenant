@@ -20,7 +20,9 @@ class CreateTenantsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('domain')->unique();
-            $table->string('aliases')->nullable();
+            $table->string('aliases')
+                ->nullable()
+                ->unique();
             $table->integer('country_id')->unsigned();
             $table->timestamps();
         });

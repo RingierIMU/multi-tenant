@@ -39,9 +39,11 @@ class TenantManager
      */
     public function loadTenant(string $domain): bool
     {
+        $domain = parse_domain($domain);
+
         /** @var Tenant $tenant */
         $tenant = Tenant::query()
-            ->where("domain", $domain)
+            ->where("domain", $domain['host'])
             ->first();
 
         if (!$tenant) {
@@ -57,7 +59,7 @@ class TenantManager
     /**
      * @param \Ringierimu\MultiTenancy\Models\Tenant $tenant
      */
-    private function loadTenantConfig(Tenant $tenant)
+    public function loadTenantConfig(Tenant $tenant)
     {
         $envConfigPath = config_path() . "/tenants/{$tenant->aliases}";
         $config = app('config');
