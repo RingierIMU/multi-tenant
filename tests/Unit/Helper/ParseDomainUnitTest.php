@@ -201,10 +201,10 @@ class ParseDomainUnitTest extends TestCase
         ],
     ];
 
-    public function testResolveDomain()
+    public function testHelperShouldResolveDomain()
     {
         foreach ($this->testUrls as $domain => $expected) {
-            print("Domain: {$domain} \n\n");
+            //print("Domain: {$domain} \n\n");
             $results = parse_domain($domain);
             $this->assertEquals($expected, $results);
         }

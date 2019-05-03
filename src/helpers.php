@@ -1,5 +1,7 @@
 <?php
 
+use Ringierimu\MultiTenant\TenantManager;
+
 if (!function_exists('parse_domain')) {
 
     /**
@@ -109,5 +111,16 @@ if (!function_exists('parse_domain')) {
             'host' => join('.', $arr),
             'tld'=> (!empty($tld)) ? "." . join('.', $tld) : ""
         ];
+    }
+}
+
+if (!function_exists('domain')) {
+
+    /**
+     * @return Ringierimu\MultiTenant\Models\Domain
+     */
+    function domain()
+    {
+        return app(TenantManager::class)->getDomain();
     }
 }

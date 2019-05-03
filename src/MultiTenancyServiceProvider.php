@@ -27,6 +27,7 @@ class MultiTenancyServiceProvider extends ServiceProvider
         $manager = new TenantManager();
 
         $this->app->instance(TenantManager::class, $manager);
+
         $this->app->bind(Domain::class, function () use ($manager) {
             return $manager->getDomain();
         });
