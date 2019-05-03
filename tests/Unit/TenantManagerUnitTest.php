@@ -19,9 +19,9 @@ class TenantManagerUnitTest extends TestCase
 
         /** @var TenantManager $tenantManager */
         $tenantManager = app(TenantManager::class);
-        $tenantManager->setTenant($tenant);
+        $tenantManager->setDomain($tenant);
 
-        $this->assertInstanceOf(Domain::class, $tenantManager->getTenant());
+        $this->assertInstanceOf(Domain::class, $tenantManager->getDomain());
     }
 
     public function testItShouldLoadTenantFromDomain()
@@ -29,14 +29,15 @@ class TenantManagerUnitTest extends TestCase
         factory(Domain::class)->create();
 
         $domain = "tenant.test";
+        /** @var TenantManager $tenantManager */
         $tenantManager = app(TenantManager::class);
-        $this->assertTrue($tenantManager->loadTenant($domain));
+        $this->assertTrue($tenantManager->loadDomain($domain));
 
         /** @var TenantManager $manager */
         $manager = app(TenantManager::class);
 
-        $this->assertInstanceOf(Domain::class, $manager->getTenant());
-        $this->assertEquals($domain, $manager->getTenant()->host);
+        $this->assertInstanceOf(Domain::class, $manager->getDomain());
+        $this->assertEquals($domain, $manager->getDomain()->host);
     }
 
 }

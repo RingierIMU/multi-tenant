@@ -20,11 +20,13 @@ trait TenantDependableTrait
 
         static::creating(function (Model $model) {
             if (!$model->{$model->domainForeignKey()} && !$model->relationLoaded('domain')) {
-                /** @var Domain $tenant */
-                $tenant = app(TenantManager::class)->getTenant();
+                /** @var TenantManager $tenantManager */
+                $tenantManager = app(TenantManager::class);
+                /** @var Domain $domain */
+                $domain = $tenantManager->getDomain();
 
-                $model->{$model->domainForeignKey()} = $tenant->id;
-                $model->setRelation('domain', $tenant);
+                $model->{$model->domainForeignKey()} = $domain->id;
+                $model->setRelation('domain', $domain);
             }
             return $model;
         });

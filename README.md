@@ -72,7 +72,7 @@ DB::table('domains')->insert([
 <?php
 
 $tenantManager = app(Ringierimu\MultiTenant\TenantManager::class);
-echo $tenantManager->getTenant();
+echo $tenantManager->getDomain();
 ``` 
 
 ```php
@@ -82,7 +82,7 @@ use Ringierimu\MultiTenant\TenantManager;
 
 public function login(TenantManager $tenantManager)
 {
-    echo $tenantManager->getTenant();
+    echo $tenantManager->getDomain();
 }
 
 ```

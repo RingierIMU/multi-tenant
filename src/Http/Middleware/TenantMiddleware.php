@@ -34,7 +34,7 @@ class TenantMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($this->tenantManager->loadTenant($request->getHost())) {
+        if ($this->tenantManager->loadDomain($request->getHost())) {
             return $next($request);
         }
 

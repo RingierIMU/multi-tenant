@@ -14,22 +14,22 @@ use Symfony\Component\Finder\Finder;
 class TenantManager
 {
     /** @var Domain */
-    private $tenant;
+    private $domain;
 
     /**
      * @return Domain
      */
-    public function getTenant(): Domain
+    public function getDomain(): Domain
     {
-        return $this->tenant;
+        return $this->domain;
     }
 
     /**
      * @param Domain $domain
      */
-    public function setTenant(Domain $domain): void
+    public function setDomain(Domain $domain): void
     {
-        $this->tenant = $domain;
+        $this->domain = $domain;
     }
 
     /**
@@ -37,7 +37,7 @@ class TenantManager
      *
      * @return bool
      */
-    public function loadTenant(string $domain): bool
+    public function loadDomain(string $domain): bool
     {
         $domain = parse_domain($domain);
 
@@ -50,8 +50,8 @@ class TenantManager
             return false;
         }
 
-        $this->setTenant($domain);
-        $this->loadTenantConfig($domain);
+        $this->setDomain($domain);
+        $this->loadDomainConfig($domain);
 
         return true;
     }
@@ -59,7 +59,7 @@ class TenantManager
     /**
      * @param Domain $domain
      */
-    public function loadTenantConfig(Domain $domain)
+    public function loadDomainConfig(Domain $domain)
     {
         $envConfigPath = config_path() . "/tenants/{$domain->aliases}";
         $config = app('config');
