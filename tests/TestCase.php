@@ -1,12 +1,12 @@
 <?php
 
-namespace Ringierimu\MultiTenancy\Tests;
+namespace Ringierimu\MultiTenant\Tests;
 
-use Ringierimu\MultiTenancy\MultiTenancyServiceProvider;
+use Ringierimu\MultiTenant\MultiTenancyServiceProvider;
 
 /**
  * Class TestCase
- * @package Ringierimu\MultiTenancy
+ * @package Ringierimu\MultiTenant
  */
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {

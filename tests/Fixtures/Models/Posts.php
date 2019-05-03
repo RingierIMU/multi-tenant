@@ -1,10 +1,10 @@
 <?php
 
-namespace Ringierimu\MultiTenancy\Tests\Fixtures\Models;
+namespace Ringierimu\MultiTenant\Tests\Fixtures\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Ringierimu\MultiTenancy\Models\Domain;
-use Ringierimu\MultiTenancy\Traits\TenantDependableTrait;
+use Ringierimu\MultiTenant\Models\Domain;
+use Ringierimu\MultiTenant\Traits\TenantDependableTrait;
 
 /**
  * Class Posts
@@ -13,7 +13,7 @@ use Ringierimu\MultiTenancy\Traits\TenantDependableTrait;
  * @property string $slug
  * @property int    $tenant_id
  * @property Domain $tenant
- * @package Ringierimu\MultiTenancy\Tests\Fixtures\Models
+ * @package Ringierimu\MultiTenant\Tests\Fixtures\Models
  */
 class Posts extends Model
 {

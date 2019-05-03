@@ -1,10 +1,10 @@
-<?php namespace Ringierimu\MultiTenancy\Tests\Unit\Helper;
+<?php namespace Ringierimu\MultiTenant\Tests\Unit\Helper;
 
-use Ringierimu\MultiTenancy\Tests\TestCase;
+use Ringierimu\MultiTenant\Tests\TestCase;
 
 /**
  * Class ParseDomainUnitTest
- * @package Ringierimu\MultiTenancy\Tests
+ * @package Ringierimu\MultiTenant\Tests
  */
 class ParseDomainUnitTest extends TestCase
 {

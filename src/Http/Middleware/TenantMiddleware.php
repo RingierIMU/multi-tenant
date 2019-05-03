@@ -1,14 +1,14 @@
 <?php
 
-namespace Ringierimu\MultiTenancy\Http\Middleware;
+namespace Ringierimu\MultiTenant\Http\Middleware;
 
 use Closure;
-use Ringierimu\MultiTenancy\TenantManager;
+use Ringierimu\MultiTenant\TenantManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class TenantMiddleware
- * @package Ringierimu\MultiTenancy\Http\Middleware
+ * @package Ringierimu\MultiTenant\Http\Middleware
  */
 class TenantMiddleware
 {
@@ -18,7 +18,7 @@ class TenantMiddleware
     /**
      * TenantMiddleware constructor.
      *
-     * @param \Ringierimu\MultiTenancy\TenantManager $tenantManager
+     * @param TenantManager $tenantManager
      */
     public function __construct(TenantManager $tenantManager)
     {

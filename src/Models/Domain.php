@@ -1,6 +1,6 @@
 <?php
 
-namespace Ringierimu\MultiTenancy\Models;
+namespace Ringierimu\MultiTenant\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $aliases
  * @property int $country_id
  *
- * @package Ringierimu\MultiTenancy\Models
+ * @package Ringierimu\MultiTenant\Models
  */
 class Domain extends Model
 {

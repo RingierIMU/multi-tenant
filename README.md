@@ -1,13 +1,13 @@
-# Laravel Multi Tenancy
+# Laravel Multi Tenant
 
-The term **multi-tenancy** refers to a software architecture in which a single instance of software runs on a server and 
+The term **multi-tenant** refers to a software architecture in which a single instance of software runs on a server and 
 serves multiple tenants. A tenant is a group of users who share a common access with specific privileges to the software instance.
 With a multi-tenant architecture, a software application is designed to provide every tenant a dedicated share of 
 the instance - including its data, configuration, user management, tenant individual functionality and non-functional properties.
 
 ## Installation
 ```
-$ composer require ringierimu/multi-tenancy 
+$ composer require ringierimu/multi-tenant
 ```
 Run migrations
 ```
@@ -15,7 +15,7 @@ $ php artisan migrate
 ```
 ## Configuration
 1. Open `kernel.php` located inside your Http directory 
-and add `Ringierimu\MultiTenancy\Http\Middleware\TenantMiddleware\TenantMiddleware::class`
+and add `Ringierimu\MultiTenant\Http\Middleware\TenantMiddleware\TenantMiddleware::class`
 to your global http middleware `$middleware`.
 ```php
  /**
@@ -38,7 +38,7 @@ to your global http middleware `$middleware`.
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Ringierimu\MultiTenancy\Traits\TenantDependableTrait;
+use Ringierimu\MultiTenant\Traits\TenantDependableTrait;
 
 /**
  * Class Post
@@ -71,14 +71,14 @@ DB::table('domains')->insert([
 ```php
 <?php
 
-$tenantManager = app(Ringierimu\MultiTenancy\TenantManager::class);
+$tenantManager = app(Ringierimu\MultiTenant\TenantManager::class);
 echo $tenantManager->getTenant();
 ``` 
 
 ```php
 <?php
 
-use Ringierimu\MultiTenancy\TenantManager;
+use Ringierimu\MultiTenant\TenantManager;
 
 public function login(TenantManager $tenantManager)
 {

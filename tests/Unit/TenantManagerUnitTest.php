@@ -1,14 +1,14 @@
 <?php
 
-namespace Ringierimu\MultiTenancy\Tests\Unit;
+namespace Ringierimu\MultiTenant\Tests\Unit;
 
-use Ringierimu\MultiTenancy\Models\Domain;
-use Ringierimu\MultiTenancy\TenantManager;
-use Ringierimu\MultiTenancy\Tests\TestCase;
+use Ringierimu\MultiTenant\Models\Domain;
+use Ringierimu\MultiTenant\TenantManager;
+use Ringierimu\MultiTenant\Tests\TestCase;
 
 /**
  * Class TenantManagerUnitTest
- * @package Ringierimu\MultiTenancy\Tests\Unit
+ * @package Ringierimu\MultiTenant\Tests\Unit
  */
 class TenantManagerUnitTest extends TestCase
 {

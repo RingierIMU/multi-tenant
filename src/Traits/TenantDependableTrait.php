@@ -1,16 +1,16 @@
 <?php
 
-namespace Ringierimu\MultiTenancy\Traits;
+namespace Ringierimu\MultiTenant\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Ringierimu\MultiTenancy\Models\Domain;
-use Ringierimu\MultiTenancy\Scopes\TenantDependableScope;
-use Ringierimu\MultiTenancy\TenantManager;
+use Ringierimu\MultiTenant\Models\Domain;
+use Ringierimu\MultiTenant\Scopes\TenantDependableScope;
+use Ringierimu\MultiTenant\TenantManager;
 
 /**
  * Trait TenantDependableTrait
- * @package Ringierimu\MultiTenancy\Traits
+ * @package Ringierimu\MultiTenant\Traits
  */
 trait TenantDependableTrait
 {

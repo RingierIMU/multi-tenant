@@ -1,15 +1,15 @@
 <?php
 
-namespace Ringierimu\MultiTenancy;
+namespace Ringierimu\MultiTenant;
 
 use Illuminate\Support\Facades\File;
-use Ringierimu\MultiTenancy\Models\Domain;
+use Ringierimu\MultiTenant\Models\Domain;
 use SplFileInfo;
 use Symfony\Component\Finder\Finder;
 
 /**
  * Class TenantManager
- * @package Ringierimu\MultiTenancy
+ * @package Ringierimu\MultiTenant
  */
 class TenantManager
 {

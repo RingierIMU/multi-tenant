@@ -1,15 +1,15 @@
 <?php
 
-namespace Ringierimu\MultiTenancy\Scopes;
+namespace Ringierimu\MultiTenant\Scopes;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Ringierimu\MultiTenancy\TenantManager;
+use Ringierimu\MultiTenant\TenantManager;
 
 /**
  * Class TenantDependableScope
- * @package Ringierimu\MultiTenancy\Scopes
+ * @package Ringierimu\MultiTenant\Scopes
  */
 class TenantDependableScope implements Scope
 {

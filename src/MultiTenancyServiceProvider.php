@@ -1,13 +1,13 @@
 <?php
 
-namespace Ringierimu\MultiTenancy;
+namespace Ringierimu\MultiTenant;
 
 use Illuminate\Support\ServiceProvider;
-use Ringierimu\MultiTenancy\Models\Domain;
+use Ringierimu\MultiTenant\Models\Domain;
 
 /**
  * Class MultiTenancyServiceProvider
- * @package Ringierimu\MultiTenancy
+ * @package Ringierimu\MultiTenant
  */
 class MultiTenancyServiceProvider extends ServiceProvider
 {

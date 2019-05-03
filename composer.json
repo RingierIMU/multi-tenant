@@ -1,5 +1,5 @@
 {
-    "name": "ringierimu/multi-tenancy",
+    "name": "ringierimu/multi-tenant",
     "description": "Laravel Multi-Tenancy package",
     "keywords": ["multi-tenancy", "tenant", "laravel", "multi-domain", "tenancy", "multi-tenant"],
     "type": "library",
@@ -20,18 +20,18 @@
             "src/helpers.php"
         ],
         "psr-4": {
-            "Ringierimu\\MultiTenancy\\": "src/"
+            "Ringierimu\\MultiTenant\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ringierimu\\MultiTenancy\\Tests\\": "tests/"
+            "Ringierimu\\MultiTenant\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Ringierimu\\MultiTenancy\\MultiTenancyServiceProvider"
+                "Ringierimu\\MultiTenant\\MultiTenancyServiceProvider"
             ]
         }
     },
