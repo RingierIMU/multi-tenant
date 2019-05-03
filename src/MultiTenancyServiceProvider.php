@@ -3,7 +3,7 @@
 namespace Ringierimu\MultiTenancy;
 
 use Illuminate\Support\ServiceProvider;
-use Ringierimu\MultiTenancy\Models\Tenant;
+use Ringierimu\MultiTenancy\Models\Domain;
 
 /**
  * Class MultiTenancyServiceProvider
@@ -27,7 +27,7 @@ class MultiTenancyServiceProvider extends ServiceProvider
         $manager = new TenantManager();
 
         $this->app->instance(TenantManager::class, $manager);
-        $this->app->bind(Tenant::class, function () use ($manager) {
+        $this->app->bind(Domain::class, function () use ($manager) {
             return $manager->getTenant();
         });
     }

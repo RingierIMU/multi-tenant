@@ -49,16 +49,16 @@ class Post extends Model
     use TenantDependableTrait;
 }
 ```
-3. Create seeder for the **`tenants`** table to populate table with data 
+3. Create seeder for the **`domains`** table to populate table with data 
 and run your seeder.<br>
 eg.
 ```php
 <?php
 use Illuminate\Support\Facades\DB;
 
-DB::table('tenants')->insert([
+DB::table('domains')->insert([
     'title' => 'Ringier',
-    'domain' => 'ringier.test',
+    'host' => 'ringier.test',
     'alieses' => 'rg',
     'country_id' => 1
 ]);
@@ -66,7 +66,7 @@ DB::table('tenants')->insert([
 
 ## Features
 ### Tenants Resolver
-- The `TenantMiddleware::class` resolve the tenants through http request. It uses the request domain to query **`tenants`** table.
+- The `TenantMiddleware::class` resolve the tenants through http request. It uses the request domain to query **`domains`** table.
 - To get instance of the resolved Tenant, you can use dependency injection to inject **`TenantManager`** class or use laravel IOC to return existing instance of **`TenantManager`** class.
 ```php
 <?php
@@ -89,6 +89,6 @@ public function login(TenantManager $tenantManager)
 ### Tenants App Config
 - To add a custom configuration per per Tenants, add directory **`tenants`** inside the laravel default config directory with the tenant **`aliases`** key as a subdirectory.
 eg. `config/tenants/rg/app.php`.<br>
-**NB.`aliases` key must be the same as the Tenant aliases key set on `tenants` table.**
+**NB.`aliases` key must be the same as the Tenant aliases key set on `domains` table.**
 - Any config keys found inside tenants directory will override any existing key of laravel default config.
 

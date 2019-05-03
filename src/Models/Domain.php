@@ -5,25 +5,22 @@ namespace Ringierimu\MultiTenancy\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Tenant
+ * Class Domain
  *
+ * @property int $id
  * @property string $title
- * @property string $domain
+ * @property string $host
  * @property string $aliases
  * @property int $country_id
- * @property bool $enabled
- * @property string $hreflang
  *
  * @package Ringierimu\MultiTenancy\Models
  */
-class Tenant extends Model
+class Domain extends Model
 {
     protected $fillable = [
         'title',
-        'domain',
+        'host',
         'aliases',
         'country_id',
-        'enabled',
-        'hreflang'
     ];
 }

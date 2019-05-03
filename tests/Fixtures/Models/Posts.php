@@ -3,7 +3,7 @@
 namespace Ringierimu\MultiTenancy\Tests\Fixtures\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Ringierimu\MultiTenancy\Models\Tenant;
+use Ringierimu\MultiTenancy\Models\Domain;
 use Ringierimu\MultiTenancy\Traits\TenantDependableTrait;
 
 /**
@@ -11,8 +11,8 @@ use Ringierimu\MultiTenancy\Traits\TenantDependableTrait;
  *
  * @property string $title
  * @property string $slug
- * @property int $tenant_id
- * @property Tenant $tenant
+ * @property int    $tenant_id
+ * @property Domain $tenant
  * @package Ringierimu\MultiTenancy\Tests\Fixtures\Models
  */
 class Posts extends Model

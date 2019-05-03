@@ -2,7 +2,7 @@
 
 namespace Ringierimu\MultiTenancy\Tests\Unit;
 
-use Ringierimu\MultiTenancy\Models\Tenant;
+use Ringierimu\MultiTenancy\Models\Domain;
 use Ringierimu\MultiTenancy\TenantManager;
 use Ringierimu\MultiTenancy\Tests\TestCase;
 
@@ -14,19 +14,19 @@ class TenantManagerUnitTest extends TestCase
 {
     public function testItShouldReturnTenant()
     {
-        /** @var Tenant $tenant */
-        $tenant = factory(Tenant::class)->create();
+        /** @var Domain $tenant */
+        $tenant = factory(Domain::class)->create();
 
         /** @var TenantManager $tenantManager */
         $tenantManager = app(TenantManager::class);
         $tenantManager->setTenant($tenant);
 
-        $this->assertInstanceOf(Tenant::class, $tenantManager->getTenant());
+        $this->assertInstanceOf(Domain::class, $tenantManager->getTenant());
     }
 
     public function testItShouldLoadTenantFromDomain()
     {
-        factory(Tenant::class)->create();
+        factory(Domain::class)->create();
 
         $domain = "tenant.test";
         $tenantManager = app(TenantManager::class);
@@ -35,8 +35,8 @@ class TenantManagerUnitTest extends TestCase
         /** @var TenantManager $manager */
         $manager = app(TenantManager::class);
 
-        $this->assertInstanceOf(Tenant::class, $manager->getTenant());
-        $this->assertEquals($domain, $manager->getTenant()->domain);
+        $this->assertInstanceOf(Domain::class, $manager->getTenant());
+        $this->assertEquals($domain, $manager->getTenant()->host);
     }
 
 }

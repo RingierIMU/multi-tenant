@@ -3,7 +3,8 @@
 namespace Ringierimu\MultiTenancy\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use Ringierimu\MultiTenancy\Models\Tenant;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Ringierimu\MultiTenancy\Models\Domain;
 use Ringierimu\MultiTenancy\Scopes\TenantDependableScope;
 use Ringierimu\MultiTenancy\TenantManager;
 
@@ -18,22 +19,38 @@ trait TenantDependableTrait
         static::addGlobalScope(new TenantDependableScope());
 
         static::creating(function (Model $model) {
-            if (!$model->tenant_id && !$model->relationLoaded('tenant')) {
-                /** @var Tenant $tenant */
+            if (!$model->{$model->domainForeignKey()} && !$model->relationLoaded('domain')) {
+                /** @var Domain $tenant */
                 $tenant = app(TenantManager::class)->getTenant();
 
-                $model->tenant_id = $tenant->id;
-                $model->setRelation('tenant', $tenant);
+                $model->{$model->domainForeignKey()} = $tenant->id;
+                $model->setRelation('domain', $tenant);
             }
             return $model;
         });
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function tenant()
+    public function domain(): BelongsTo
     {
-        return $this->belongsTo(Tenant::class, 'tenant_id');
+        return $this->belongsTo(Domain::class, $this->getDomainForeignKey(), $this->primaryKey);
+    }
+
+    /**
+     * @return string
+     */
+    public function domainForeignKey(): string
+    {
+        return 'domain_id';
+    }
+
+    /**
+     * @return string
+     */
+    public function getDomainForeignKey(): string
+    {
+        return $this->domainForeignKey();
     }
 }

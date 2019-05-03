@@ -23,8 +23,8 @@ class TenantDependableScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        /** @var TenantManager $manager */
-        $manager = app(TenantManager::class);
-        $builder->where('tenant_id', $manager->getTenant()->id);
+        /** @var TenantManager $tenantManager */
+        $tenantManager = app(TenantManager::class);
+        $builder->where($model->getDomainForeignKey(), $tenantManager->getTenant()->id);
     }
 }

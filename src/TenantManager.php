@@ -3,7 +3,7 @@
 namespace Ringierimu\MultiTenancy;
 
 use Illuminate\Support\Facades\File;
-use Ringierimu\MultiTenancy\Models\Tenant;
+use Ringierimu\MultiTenancy\Models\Domain;
 use SplFileInfo;
 use Symfony\Component\Finder\Finder;
 
@@ -13,23 +13,23 @@ use Symfony\Component\Finder\Finder;
  */
 class TenantManager
 {
-    /** @var Tenant */
+    /** @var Domain */
     private $tenant;
 
     /**
-     * @return Tenant
+     * @return Domain
      */
-    public function getTenant(): Tenant
+    public function getTenant(): Domain
     {
         return $this->tenant;
     }
 
     /**
-     * @param Tenant $tenant
+     * @param Domain $domain
      */
-    public function setTenant(Tenant $tenant): void
+    public function setTenant(Domain $domain): void
     {
-        $this->tenant = $tenant;
+        $this->tenant = $domain;
     }
 
     /**
@@ -41,27 +41,27 @@ class TenantManager
     {
         $domain = parse_domain($domain);
 
-        /** @var Tenant $tenant */
-        $tenant = Tenant::query()
-            ->where("domain", $domain['host'])
+        /** @var Domain $domain */
+        $domain = Domain::query()
+            ->where("host", $domain['host'])
             ->first();
 
-        if (!$tenant) {
+        if (!$domain) {
             return false;
         }
 
-        $this->setTenant($tenant);
-        $this->loadTenantConfig($tenant);
+        $this->setTenant($domain);
+        $this->loadTenantConfig($domain);
 
         return true;
     }
 
     /**
-     * @param \Ringierimu\MultiTenancy\Models\Tenant $tenant
+     * @param Domain $domain
      */
-    public function loadTenantConfig(Tenant $tenant)
+    public function loadTenantConfig(Domain $domain)
     {
-        $envConfigPath = config_path() . "/tenants/{$tenant->aliases}";
+        $envConfigPath = config_path() . "/tenants/{$domain->aliases}";
         $config = app('config');
         $excludedDirectories = [];
         $environment = app()->environment();
